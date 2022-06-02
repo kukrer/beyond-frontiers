@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
         onClick={isLogIn ? connectWalletAndShowNFT : disconnectWallet}
       >
         {isLogIn ? (
-          <> Login</>
+          <> Connect</>
         ) : (
           <>
             <AiFillPlayCircle className="text-white mr-2 inline-flex" />
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
         <img src={logo} alt="logo" className="w-32 cursor-pointer invert" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {['NFT', 'Exchange', 'Tutorials', 'Wallets'].map((item, index) => (
+        {[].map((item, index) => (
           <NavbarItem key={item + index} title={item} classProps="" />
         ))}
         <li>{renderButton()}</li>
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
             <li className="text-xl w-full my-2">
               <AiOutlineClose onClick={() => setToogleMenu(false)} />
             </li>
-            {['Market', 'Exchange', 'Tutorials', 'Wallets'].map(
+            {[].map(
               (item, index) => (
                 <NavbarItem
                   key={item + index}
