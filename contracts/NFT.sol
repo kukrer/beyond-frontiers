@@ -12,14 +12,15 @@ contract NFT is ERC721Enumerable, Ownable {
 
     Counters.Counter private _tokenIds;
 
-    uint256 public constant MAX_SUPPLY = 100;
-    uint256 public constant PRICE = 0.01 ether;
-    uint256 public constant MAX_PER_MINT = 5;
-    uint256 private constant MAX_RESERVE_NFT = 5;
+    uint256 public constant MAX_SUPPLY = 4000;
+    uint256 public constant PRICE = 40;
+    uint256 public constant MAX_PER_MINT = 10;
+    uint256 public constant MAX_PER_WALLET = 10;
+    uint256 private constant MAX_RESERVE_NFT = 0;
 
     string public baseTokenURI;
 
-    constructor(string memory baseURI) ERC721("BitTopCraft NFT Collection Demo", "NFT v1") {
+    constructor(string memory baseURI) ERC721("Beyond Frontiers Collection", "NFT") {
         setBaseURI(baseURI);
     }
 
@@ -46,6 +47,7 @@ contract NFT is ERC721Enumerable, Ownable {
 
     function mintNFTs(uint256 _count) public payable {
         uint256 totalMinted = _tokenIds.current();
+				uint256 tokenCount = balanceOf(msg.sender);
 
         require(totalMinted.add(_count) <= MAX_SUPPLY, "Not enough NFTs left!");
         require(
@@ -56,6 +58,11 @@ contract NFT is ERC721Enumerable, Ownable {
             msg.value >= PRICE.mul(_count),
             "Not enough ether to purchase NFTs."
         );
+
+				require(
+						_count+tokenCount <= MAX_PER_WALLET,
+            "Too many NFTs for single owner."
+				);
 
         for (uint256 i = 0; i < _count; i++) {
             _mintSingleNFT();
