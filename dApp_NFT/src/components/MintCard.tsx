@@ -25,8 +25,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
   tokenId,
   hasFavorite = false
 }) => {
-  const baseIdImage = 'QmUygfragP8UmCa7aq19AHLttxiLw1ELnqcsQQpM5crgTF';
-  const imageURI = `https://cloudflare-ipfs.com/ipfs/${baseIdImage}/${tokenId}.png`;
+  const imageURI = `http://vps636901.ovh.net:3000/ticket.jpeg`;
   const [metaDataInfo, setMetaDataInfo] = useState({} as IMetaDataInfo);
   const [address, setAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -62,7 +61,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
     const initData = async () => {
       const res = await (
         await fetch(
-          `https://opensea.mypinata.cloud/ipfs/QmZbWNKJPAjxXuNFSEaksCJVd1M6DaKQViJBYPK2BdpDEP/${tokenId}`
+          `http://vps636901.ovh.net:3000/ticket.jpeg`
         )
       ).json();
       console.log(res);
@@ -122,22 +121,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
           </div>
         </div>
         <div className="flex justify-between mt-4">
-          <button
-            type="button"
-            onClick={() => sendTransfer(tokenId)}
-            disabled={isLoading}
-            className="bg-[#2952e3] py-2 px-5 mr-4 rounded-xl cursor-pointer hover:bg-[#2546bd] text-white"
-          >
-            Transfer
-          </button>
-          <input
-            type="text"
-            name="transferEther"
-            className="w-full"
-            value={address}
-            placeholder="eth Address"
-            onChange={onChangeText}
-          />
+          
         </div>
       </div>
     </>
