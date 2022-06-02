@@ -2,7 +2,7 @@ import { utils } from 'ethers';
 import { ethers } from 'hardhat';
 
 async function main() {
-  const baseTokenURI = 'ipfs://QmZbWNKJPAjxXuNFSEaksCJVd1M6DaKQViJBYPK2BdpDEP/';
+  const baseTokenURI = 'http://vps636901.ovh.net:3000/ticket.jpeg';
 
   // Get owner/deployer's wallet address
   const [owner] = await ethers.getSigners();
@@ -22,11 +22,11 @@ async function main() {
   // Reserve NFTs
   let txn = await contract.reserveNFTs();
   await txn.wait();
-  console.log('5 NFTs have been reserved');
+  console.log('Requested (if any) NFTs have been reserved');
 
   // Mint 2 NFTs by sending 0.02 ether
-  txn = await contract.mintNFTs(2, { value: utils.parseEther('0.02') });
-  await txn.wait();
+  //txn = await contract.mintNFTs(2, { value: utils.parseEther('0.02') });
+  //await txn.wait();
 
   // Get all token IDs of the owner
   const tokens = await contract.tokensOfOwner(owner.address);
