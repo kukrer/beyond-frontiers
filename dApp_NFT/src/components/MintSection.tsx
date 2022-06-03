@@ -36,9 +36,9 @@ export const MintSection: React.FC = () => {
   }, [executeRecaptcha]);
 
   // You can use useEffect to trigger the verification as soon as the component being loaded
-  useEffect(() => {
-    handleReCaptchaVerify();
-  }, [handleReCaptchaVerify]);
+//  useEffect(() => {
+//    handleReCaptchaVerify();
+//  }, [handleReCaptchaVerify]);
 
   const handleChange: HandleChangeType = (e, name) => {
     // todo: inform delegation
