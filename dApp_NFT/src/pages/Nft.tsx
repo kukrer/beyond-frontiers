@@ -1,5 +1,6 @@
 import { Navbar, Welcome } from '../components';
 import MintCardList from '../components/MintCardList';
+import { contractNFTAddress } from '../utils/constants';
 
 export const NftPage = () => {
   return (
@@ -15,6 +16,9 @@ export const NftPage = () => {
               <h2 className="capitalize font-bold md:text-4xl text-3xl  text-gray-900">
                 <span>NFT Collectible</span>
               </h2>
+              <h3 className="md:text-xl text-xl  text-gray-900">
+                <span>Add {contractNFTAddress} contract address to Metamask to see your tickets</span>
+              </h3>              
             </div>
           </div>
           <MintCardList />

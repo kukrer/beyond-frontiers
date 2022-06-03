@@ -14,6 +14,8 @@ import { Input } from './Input';
 import { MintSection } from './MintSection';
 import { shortAddress } from '../utils/Address';
 
+import { NFT_IMAGE_URI } from '../utils/constants';
+
 const companyCommonStyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
 
@@ -82,7 +84,7 @@ const Welcome: React.FC<IWelcomeProps> = ({
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
         <div>
         <img
-                src="http://ec2-3-142-229-40.us-east-2.compute.amazonaws.com:3009/ticket.jpeg"
+                src={NFT_IMAGE_URI}
                 className="border-4 border-secondary-500 rounded-full"
                 alt="..."
                 width="360"

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { useContext, useEffect, useState } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
+import { NFT_IMAGE_URI } from '../utils/constants';
 
 import {
   ActionType,
@@ -25,7 +26,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
   tokenId,
   hasFavorite = false
 }) => {
-  const imageURI = `http://vps636901.ovh.net:3000/ticket.jpeg`;
+  const imageURI = NFT_IMAGE_URI;
   const [metaDataInfo, setMetaDataInfo] = useState({} as IMetaDataInfo);
   const [address, setAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +62,7 @@ export const MintCard: React.FC<IMintCardProps> = ({
     const initData = async () => {
       const res = await (
         await fetch(
-          `http://vps636901.ovh.net:3000/ticket.jpeg`
+          `NFT_IMAGE_URI`
         )
       ).json();
       console.log(res);
@@ -83,45 +84,9 @@ export const MintCard: React.FC<IMintCardProps> = ({
         />
       </a>
       <div className="px-4 py-6 sm:px-6">
-        <div className="flex items-center justify-between">
-          <h3 className="font-bold text-xl">
-            <a href="#" className="hover:text-primary-500 text-gray-900">
-              {metaDataInfo?.name}
-            </a>
-          </h3>
-          <button
-            type="button"
-            className="hover:text-primary-500 inline-block rounded-full text-gray-900"
-            onClick={handleFavorite}
-            aria-label={toggleFavorite ? i18n.addFavorite : i18n.favoriteHeart}
-          >
-            {toggleFavorite ? (
-              <BsHeartFill size="1.5em" />
-            ) : (
-              <BsHeart size="1.5em" />
-            )}
-          </button>
-        </div>
         <hr className="border-gray-200 my-4" />
         <div className="flex items-center justify-between">
-          <div>
-            <a
-              href="#"
-              className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixid=MXwyMDkyMnwwfDF8c2VhcmNofDE5fHxkb2d8ZW58MHx8fA&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=400&amp;h=400&amp;fit=crop"
-                className="border-4 border-secondary-500 rounded-full"
-                alt="..."
-                width="36"
-                height="36"
-              />
-              <span>Owned by you</span>
-            </a>
-          </div>
-        </div>
-        <div className="flex justify-between mt-4">
-          
+          <span>NFT ID: {tokenId}</span>
         </div>
       </div>
     </>

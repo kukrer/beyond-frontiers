@@ -14,9 +14,10 @@ import {
   useGoogleReCaptcha
 } from 'react-google-recaptcha-v3';
 
-const MINT_PAY = 40;
+import { contract_NFT_PRICE, MAX_PER_MINT } from '../utils/constants';
+
 export const MintSection: React.FC = () => {
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(1);
   const { isLoading, mintToken } = useContext(
     TransactionContext
   ) as ITransactionContextProps;
@@ -31,25 +32,32 @@ export const MintSection: React.FC = () => {
 
     const token = await executeRecaptcha('yourAction');
     // Do whatever you want with the token
-
-    mintToken(counter);
+    //mintToken(counter);
   }, [executeRecaptcha]);
 
   // You can use useEffect to trigger the verification as soon as the component being loaded
-//  useEffect(() => {
-//    handleReCaptchaVerify();
-//  }, [handleReCaptchaVerify]);
+  useEffect(() => {
+    handleReCaptchaVerify();
+  }, [handleReCaptchaVerify]);
 
   const handleChange: HandleChangeType = (e, name) => {
     // todo: inform delegation
     const bigNumber = BigNumber.from(Math.abs(Number(e.target?.value)));
+		if(Number(bigNumber) > MAX_PER_MINT) {
+			alert('Maximum tokens you can mint are ' + MAX_PER_MINT)
+			return
+		}
     setCounter(Number(bigNumber));
   };
   const decreaseNFT = () => {
-    if (counter - 1 < 0) return;
+    if (counter - 1 < 1) return;
     setCounter(counter - 1);
   };
   const increaseNFT = () => {
+		if(counter + 1 > MAX_PER_MINT) {
+			alert('Maximum tokens you can mint are ' + MAX_PER_MINT)
+			return
+		}
     setCounter(counter + 1);
   };
 
@@ -92,13 +100,13 @@ export const MintSection: React.FC = () => {
           <div className="mt-6">
             <button
               type="button"
-              onClick={handleReCaptchaVerify}
+              onClick={minTokenHandler}
               className=" md:inline-flex items-center text-white border-[1px] border-[#3d4f7c] hover:bg-[#3d4f7c]  font-medium rounded-lg text-sm px-5 py-2.5 text-center ml-3"
             >
               Buy
             </button>
             <p className="font-medium text-white text-xs my-1">
-              Pay {MINT_PAY} matic for each ticket + gas
+              Pay {contract_NFT_PRICE} matic for each ticket + gas
             </p>
           </div>
         </>

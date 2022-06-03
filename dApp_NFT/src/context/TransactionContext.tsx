@@ -1,9 +1,8 @@
 import { ethers, utils } from 'ethers';
 import React, { useEffect, useState } from 'react';
 import { HandleChangeType } from '../components/Input';
-import Web3 from 'web3';
 
-import { contract_NFT_ABI, contractNFTAddress } from '../utils/constants';
+import { contract_NFT_ABI, contractNFTAddress, contract_NFT_PRICE, MAX_PER_WALLET } from '../utils/constants';
 
 export const KEY_FAVORITELIST = 'favoritedHeartList';
 
@@ -149,7 +148,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
 
 			const accounts = await ethereum.request({ method: 'eth_accounts' });
 
-			if (accounts.lenght) {
+			if (accounts.length) {
 				setCurrentAccount(accounts[0]);
 			} else {
 				console.log('No accounts');
@@ -220,11 +219,28 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
 				alert('Please log in!');
 				return;
 			}
+			const balance = await window.ethereum.request({ method: 'eth_getBalance', params: [ currentAccount, 'latest' ]})
+			const ethBalance = parseInt(balance, 16) / Math.pow(10, 18)
+			if(ethBalance < (contract_NFT_PRICE*countNFT)) {
+				alert('Insufficient funds. Each ticket costs ' + contract_NFT_PRICE + ' MATIC (+gas). You are trying to buy ' 
+							+ countNFT + ' tickets, but you only have ' + ethBalance + ' MATIC')
+				return
+			}
 
 			const contract = getNFTContract();
 
+			const tokensofowner = await contract.tokensOfOwner(currentAccount)
+			const tokenCnt = tokensofowner.length;
+			if(MAX_PER_WALLET < (tokenCnt+countNFT)) {
+				  alert('A wallet can have a maximum of ' + MAX_PER_WALLET + ' tickets. You already have ' 
+				        + tokenCnt + '. You cannot mint ' + countNFT + ' more tickets')
+				  return
+			}
+
+			console.log('Minting ', countNFT, ' @', contract_NFT_PRICE.toString(), ' MATIC each');
+			
 			const transactionHash = await contract.mintNFTs(countNFT, {
-				value: utils.parseEther('0.03')
+				value: utils.parseEther(contract_NFT_PRICE.toString())
 			});
 			console.log('Loading -', transactionHash.hash);
 			setIsLoading(true);
