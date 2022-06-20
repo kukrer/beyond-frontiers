@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Footer } from './components';
 import { NftPage } from './pages/Nft';
+import { FaqPage } from './pages/Faq';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<NftPage />} />
           <Route path="/nft" element={<NftPage />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="*" element={<main>Not Found 404!</main>} />
         </Routes>
         <Footer />

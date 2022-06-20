@@ -16,6 +16,8 @@ import { shortAddress } from '../utils/Address';
 
 import { NFT_IMAGE_URI } from '../utils/constants';
 
+import {FaqPage} from '../pages/Faq';
+
 const companyCommonStyles =
   'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white';
 
@@ -59,11 +61,37 @@ const Welcome: React.FC<IWelcomeProps> = ({
     <div className="flex w-full justify-center items-center ">
       <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4 max-w-6xl w-full">
         <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
-          <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
-            Buy <br /> your ticket
+          <h1 className="text-2xl sm:text-5xl text-white  py-1">
+             Buy your NFT<br /> an Artwork designed by SUMO 
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Here mint your own ticket for the beyond frontiers community.
+            Here mint your own NFT for the beyond frontiers community.
+<br />  </p>
+           <p className="text-left  text-xl sm:text-xl text-white py-1">
+            4 Steps to get your NFT:
+            <br /> 
+            </p>
+            <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
+1/ Download                   <a
+                    href="https://metamask.io/"
+                    className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"
+                  >
+                   &nbsp;Metamask&nbsp;
+                  </a> and create your Wallet
+<br /> <br /> 
+2/ Go on your favorite crypto exchange to buy some MATIC, the currency required to purchase our NFTs, on your MetaMask Wallet
+<br /> <br /> 
+3/ Connect your MetaMask wallet to this website
+<br /> <br /> 
+4/ Select the number of NFT you want to buy and validate the transaction 
+<br /> <br /> 
+For further questions see the 
+                  <a
+                    href="/faq"
+                    className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"
+                  >
+                   &nbsp;FAQ
+                  </a>
           </p>
           {!currentAccount && (
             <button
