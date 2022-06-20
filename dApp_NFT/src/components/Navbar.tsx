@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AiFillPlayCircle, AiOutlineClose } from 'react-icons/ai';
 import { HiMenuAlt4 } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
@@ -27,6 +27,11 @@ const Navbar: React.FC = () => {
   const { currentAccount, disconnectWallet, connectWalletAndShowNFT } =
     useContext(TransactionContext) as ITransactionContextProps;
 
+  useEffect(() => {
+		if(currentAccount)
+	    connectWalletAndShowNFT();
+  }, [currentAccount]);
+  <a href="faq.html">FAQ</a>
   const renderButton = () => {
     const isLogIn = !currentAccount;
     return (
@@ -49,8 +54,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
-        <img src={logo} alt="logo" className="w-32 cursor-pointer invert" />
-      </div>
+      	<a href="https://www.ictspring.com/" className="block group relative">
+        	<img src={logo} alt="logo" className="w-32 cursor-pointer invert"/>
+        </a>
+     </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
         {[].map((item, index) => (
           <NavbarItem key={item + index} title={item} classProps="" />
