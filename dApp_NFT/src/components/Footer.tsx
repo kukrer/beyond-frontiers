@@ -11,19 +11,19 @@ const Footer: React.FC = () => {
   	      	<img src={logo} alt="ictspring" className="w-32 cursor-pointer invert"/>
     	    </a>
         </div>
-
+<div>
       	<a href="https://www.facebook.com/ICTSpring/" className="block group relative">
-        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-128.png" alt="facebook" className="w-32 cursor-pointer"/>
+        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-facebook-128.png" alt="facebook" className="w-32 cursor-pointer w-12 h-12"/>
         </a>
 
       	<a href="https://twitter.com/ICTSpring" className="block group relative">
-        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-twitter-256.png" alt="twitter" className="w-32 cursor-pointer"/>
+        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-twitter-256.png" alt="twitter" className="w-32 cursor-pointer w-12 h-12"/>
         </a>
 
       	<a href="https://www.linkedin.com/company/ict-spring/" className="block group relative">
-        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-256.png" alt="LinkedIn" className="w-32 cursor-pointer"/>
+        	<img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-256.png" alt="LinkedIn" className="w-32 cursor-pointer w-12 h-12"/>
         </a>
-
+</div>
       </div>
 
       <div className="flex justify-center items-center flex-col mt-5">
