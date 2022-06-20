@@ -17,8 +17,11 @@ export const NftPage = () => {
                 <span>NFT Collectible</span>
               </h2>
               <h3 className="md:text-xl text-xl  text-gray-900">
-                <span>Add {contractNFTAddress} contract address to Metamask to see your tickets</span>
-              </h3>              
+                <span>Add contract address to Metamask to see your tickets:</span>
+              </h3>
+              <h4 className="md:text-xs">
+                <span>{contractNFTAddress}</span>
+              </h4>
             </div>
           </div>
           <MintCardList />
