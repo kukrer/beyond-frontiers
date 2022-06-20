@@ -47,7 +47,7 @@ const MintCardList: React.FC = () => {
         <>{renderNFTSection()}</>
       ) : (
         <div className="flex flex-wrap gap-y-6 justify-center mb-12">
-          <p className="inline-block w-full">No NFT exist</p>
+          <p className="inline-block w-full">You don't have any NFTs yet</p>
         </div>
       )}
     </>
