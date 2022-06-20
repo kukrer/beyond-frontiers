@@ -2,7 +2,7 @@ import { ethers, utils } from 'ethers';
 import React, { useEffect, useState } from 'react';
 import { HandleChangeType } from '../components/Input';
 
-import { contract_NFT_ABI, contractNFTAddress, contract_NFT_PRICE, MAX_PER_WALLET } from '../utils/constants';
+import { contract_NFT_ABI, contractNFTAddress, contract_NFT_PRICE, MAX_PER_WALLET, TARGET_CHAINID, TARGET_CHAINID_HEXSTR, TARGET_NETWORK_NAME, TARGET_RPC, TARGET_EXPLORER } from '../utils/constants';
 
 export const KEY_FAVORITELIST = 'favoritedHeartList';
 
@@ -97,21 +97,7 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
 		}));
 	};
 
-	const POLYGON_MAINNET_CHAINID = 137
-	const POLYGON_MUMBAI_CHAINID = 80001
-	const POLYGON_MAINNET_CHAINID_HEXSTR = '0x89'
-	const POLYGON_MUMBAI_CHAINID_HEXSTR = '0x13881'
-	const POLYGON_MAINNET_NETWORK_NAME = 'Polygon Mainnet'
-	const POLYGON_MUMBAI_NETWORK_NAME = 'Mumbai'
-	const POLYGON_MAINNET_RPC = 'https://polygon-rpc.com/'
-	const POLYGON_MUMBAI_RPC = 'https://matic-mumbai.chainstacklabs.com'
-	const POLYGON_MAINNET_EXPLORER = 'https://polygonscan.com/'
-	const POLYGON_MUMBAI_EXPLORER = 'https://mumbai.polygonscan.com'
-	const TARGET_CHAINID = POLYGON_MUMBAI_CHAINID
-	const TARGET_CHAINID_HEXSTR = POLYGON_MUMBAI_CHAINID_HEXSTR
-	const TARGET_NETWORK_NAME = POLYGON_MUMBAI_NETWORK_NAME
-	const TARGET_RPC = POLYGON_MUMBAI_RPC
-	const TARGET_EXPLORER = POLYGON_MUMBAI_EXPLORER
+
 
 	const checkRightNetwork = async () => {
 		if (ethereum.networkVersion !== TARGET_CHAINID) {
