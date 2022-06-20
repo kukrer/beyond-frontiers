@@ -118,7 +118,6 @@ export const TransactionProvider: React.FC<TransactionProviderProps> = ({
 			try {
 				await ethereum.request({
 					method: 'wallet_switchEthereumChain',
-//					params: [{ chainId: web3.utils.toHex(TARGET_CHAINID) }]
 					params: [{ chainId: TARGET_CHAINID_HEXSTR }]
 				});
 			} catch (err) {
