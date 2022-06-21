@@ -1,18 +1,31 @@
 import { Navbar } from '../components';
 import { contract_NFT_PRICE } from '../utils/constants';
 
+import React, { useContext } from 'react';
+import { AiFillPlayCircle } from 'react-icons/ai';
+import { BsInfoCircle } from 'react-icons/bs';
+import { SiEthereum } from 'react-icons/si';
+
+import { NftPage } from './Nft';
+
 export const FaqPage = () => {
 	return (
     <div>
       <div className="gradient-bg-welcome">
-        <Navbar />
-        
-	      <section className="bg-opacity-50 bg-slate-500  flex w-full justify-center items-center">
+        <Navbar />          
+        <div className="flex flex-row-reverse">
+          <button type="button" onClick={(e) => {e.preventDefault(); window.location.href='/'; }}
+            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]">
+            <AiFillPlayCircle className="text-white mr-2" />
+            <p className="text-white text-base font-semibold">Back</p>
+          </button>
+        </div>
+	      <section className="bg-opacity-50 bg-slate-500  flex w-full justify-center items-center ">
+      		<div className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
 	  		  <h1 className="text-2xl sm:text-3xl text-white  py-1">
-    	Getting started&nbsp; <br/> (Quick quide)
+    	Getting started (Quick quide)
     			</h1>
-      		<p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-<ul class="list-disc list-outside px-12">
+<ul className="list-disc list-outside px-12">
 <li>Before you can connect your MetaMask wallet to <a href="/" className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"> Beyond Frontiers </a>, you must first install the MetaMask extension in your browser or download the MetaMask app on your smartphone.</li>
 <li>Once you have installed and set up your MetaMask wallet, you can open the <a href="/" className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"> Beyond Frontiers </a>. For mobile users, please open the website directly with the browser integrated in the MetaMask App.</li>
 <li>Hit the Connect button in the navigating menu and then select MetaMask from the list.</li>
@@ -20,22 +33,21 @@ export const FaqPage = () => {
 <li>Follow the prompts on the screen and you will be connected to the <a href="/" className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"> Beyond Frontiers NFT site </a>.</li>
 <li>Once you are connected with your wallet, hit the buy button, and follow the steps in your MetaMask extension in your browser or in your MetaMask app on your smartphone.</li><br/>&nbsp;
 </ul>
-					</p>
+					</div>
 				</section>
 				
 			</div>
       <div className="gradient-bg-welcome"><br/>&nbsp;
   	    <section className="bg-opacity-80 bg-slate-500  flex w-full justify-center items-center">
+     		<div className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
 	  		  <h1 className="text-2xl sm:text-3xl text-white  py-1">
-Detailed <br/>instructions&nbsp;
+Detailed instructions
 					</h1>
-     		<p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-
-	<ul class="list-disc text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base px-20">
+	<ul className="list-disc list-outside px-12">
 	<li>How to install MetaMask browser extension in 5 minutes
-		<ul class="list-disc px-10">
+		<ul className="list-disc px-3">
 		<li>Desktop
-			<ol class="list-decimal px-10">
+			<ol className="list-decimal px-3">
 			<li>Visit the MetaMask website (https://metamask.io/)</li>
 			<li>Install the browser extension</li>
 			<li>Set your password</li>
@@ -44,9 +56,9 @@ Detailed <br/>instructions&nbsp;
 			</ol>
 		</li>
 		</ul>
-		<ul class="list-disc px-10">
+		<ul className="list-disc px-3">
 		<li>Mobile
-			<ol class="list-decimal px-10">
+			<ol className="list-decimal px-3">
 			<li>Visit the MetaMask website or App store (https://metamask.io/)</li>
 			<li>Install the MetaMask App</li>
 			<li>Set your password</li>
@@ -57,21 +69,21 @@ Detailed <br/>instructions&nbsp;
 		</ul>
 	</li>
 	</ul>
-
-	<ul class="list-disc  text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base px-20">
+<br/>
+	<ul className="list-disc list-outside px-12">
 	<li>How to connect MetaMask to <a href="/" className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"> Beyond Frontiers </a>
-		<ul class="list-disc px-10">
+		<ul className="list-disc px-3">
 		<li>Desktop
-			<ol class="list-decimal px-10">
+			<ol className="list-decimal px-3">
 			<li>Go to <a href="/" className="hover:text-gray-400 inline-flex italic items-center space-x-2 text-sm"> Beyond Frontiers </a></li>
 			<li>Select MetaMask</li>
 			<li>Connect with MetaMask</li>
 			</ol>
 		</li>
 		</ul>
-		<ul class="list-disc px-10">
+		<ul className="list-disc px-3">
 		<li>Mobile
-			<ol class="list-decimal px-10">
+			<ol className="list-decimal px-3">
 			<li>Visit the website within the MetaMask App browser</li>
 			<li>Select MetaMask</li>
 			<li>Tap on <q>Connect</q></li>
@@ -82,13 +94,13 @@ Detailed <br/>instructions&nbsp;
 	</ul>
 
 <br/>&nbsp;
-					</p>
+					</div>
 				</section>
 				
 			</div>
       <div className="gradient-bg-welcome"><br/>&nbsp;
   	    <section className="bg-opacity-50 bg-slate-500  flex w-full justify-center items-center">
-      		<p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
+      		<div className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
 
             <h3 className="md:text-xl text-xl  text-white-900">
 What is an NFT?</h3>
@@ -163,8 +175,15 @@ You can use credit card directly in MetaMask to buy MATIC. But you cannot use cr
 I cannot find the answer to my questions. How can I get help?</h3>
 Rush on the info point next to the entry to discuss with the TheSafeBox.io team that will guide you in your first NFT experience.<br/>&nbsp;
 
-					</p>
+					</div>
 				</section>
+        <div className="flex flex-row-reverse">
+          <button type="button" onClick={(e) => {e.preventDefault(); window.location.href='/'; }}
+            className="flex flex-row justify-center items-center my-5 bg-[#2952e3] p-3 rounded-full cursor-pointer hover:bg-[#2546bd]">
+            <AiFillPlayCircle className="text-white mr-2" />
+            <p className="text-white text-base font-semibold">Back</p>
+          </button>
+        </div>
 			</div>
 		</div>
 	);
