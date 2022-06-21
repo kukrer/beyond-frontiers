@@ -7,7 +7,7 @@ import { NFT, NFT__factory } from '../typechain';
 
 describe('Nft Contract', () => {
   const baseTokenURI = 'ipfs://QmZbWNKJPAjxXuNFSEaksCJVd1M6DaKQViJBYPK2BdpDEP/';
-  const MAX_SUPPLY = 100;
+  const MAX_SUPPLY = 4000;
   let nftContract: NFT;
   let owner: SignerWithAddress;
   let NFT_Factory: NFT__factory;
