@@ -8,6 +8,7 @@ import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import * as dotenv from 'dotenv';
 import { HardhatUserConfig, task } from 'hardhat/config';
 import { HardhatRuntimeEnvironment, TaskArguments } from 'hardhat/types';
+require("@nomiclabs/hardhat-etherscan");
 
 dotenv.config();
 
@@ -31,8 +32,9 @@ task(
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 const {
-  ALCHEMY_API_URL,
-  ACCOUNT_PRIVATE_KEY = '',
+  MATIC_TEST_API_URL = 'https://matic-mumbai.chainstacklabs.com',
+  MUMBAI_ACCOUNT_PRIVATE_KEY = '',
+  MAINNET_ACCOUNT_PRIVATE_KEY = '',
   ETHERSCAN_API_KEY = '',
   REPORT_GAS
 } = process.env;
@@ -41,9 +43,13 @@ const config: HardhatUserConfig = {
   solidity: '0.8.4',
   defaultNetwork: 'hardhat',
   networks: {
-    rinkeby: {
-      url: ALCHEMY_API_URL,
-      accounts: [ACCOUNT_PRIVATE_KEY]
+    matic_mumbai: {
+      url: MATIC_TEST_API_URL,
+      accounts: [MUMBAI_ACCOUNT_PRIVATE_KEY]
+    },
+    matic_mainnet: {
+      url: 'https://polygon-rpc.com',
+      accounts: [MAINNET_ACCOUNT_PRIVATE_KEY]
     },
     localhost: {
       url: 'http://localhost:8545'
