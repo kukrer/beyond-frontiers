@@ -13,7 +13,7 @@ contract NFT is ERC721Enumerable, Ownable {
     Counters.Counter private _tokenIds;
 
     uint256 public constant MAX_SUPPLY = 4000;
-    uint256 public constant PRICE = 0.004 ether;
+    uint256 public constant PRICE = 65;
     uint256 public constant MAX_PER_MINT = 10;
     uint256 public constant MAX_PER_WALLET = 10;
     uint256 private constant MAX_RESERVE_NFT = 0;
